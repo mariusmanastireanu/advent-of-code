@@ -1,4 +1,4 @@
-package org.advent;
+package org.advent.day1;
 
 import org.advent.helper.InputReader;
 
