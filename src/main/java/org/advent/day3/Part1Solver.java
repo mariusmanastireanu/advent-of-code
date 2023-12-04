@@ -1,17 +1,14 @@
 package org.advent.day3;
 
-import lombok.Getter;
-
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Part1Resolver extends AbstractResolver {
+public class Part1Solver extends Day3Solver {
 
     private final AtomicInteger result = new AtomicInteger(0);
-    @Getter private final String filename;
 
-    public Part1Resolver(String filename) {
-        this.filename = filename;
+    public Part1Solver(String filename) {
+        super(filename);
     }
 
     @Override
@@ -22,7 +19,7 @@ public class Part1Resolver extends AbstractResolver {
     }
 
     @Override
-    public int getResult() {
+    public Object getResult() {
         return result.get();
     }
 

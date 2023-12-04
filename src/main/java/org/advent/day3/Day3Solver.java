@@ -1,21 +1,25 @@
 package org.advent.day3;
 
-import org.advent.helper.InputReader;
+import org.advent.helper.AbstractSolver;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public abstract class AbstractResolver {
+public abstract class Day3Solver extends AbstractSolver {
 
-    protected abstract String getFilename();
+    public Day3Solver(String filename) {
+        super(filename);
+    }
+
     protected abstract void resolve(List<List<Character>> map, Integer line, Integer colStart, Integer colEnd, Integer number);
-    protected abstract int getResult();
 
-    public void resolve() {
+    @Override
+    public void solve(Collection<String> lines) {
         final List<List<Character>> charMatrix = new ArrayList<>();
-        for (String line : InputReader.readFile(getFilename())) {
+        for (String line : lines) {
             charMatrix.add(new ArrayList<>(line.chars().mapToObj(c -> (char) c).collect(Collectors.toList())));
         }
         for (int line = 0; line < charMatrix.size(); line++) {

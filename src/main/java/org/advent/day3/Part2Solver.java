@@ -1,19 +1,16 @@
 package org.advent.day3;
 
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Part2Resolver extends AbstractResolver {
+public class Part2Solver extends Day3Solver {
 
     private final Map<Point, List<Integer>> map = new HashMap<>();
-    @Getter private final String filename;
 
-    public Part2Resolver(String filename) {
-        this.filename = filename;
+    public Part2Solver(String filename) {
+        super(filename);
     }
 
     @Override
@@ -27,7 +24,7 @@ public class Part2Resolver extends AbstractResolver {
     }
 
     @Override
-    public int getResult() {
+    public Object getResult() {
         return map.values()
                 .stream()
                 .filter(integers -> integers.size() == 2)
