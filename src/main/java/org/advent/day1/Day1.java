@@ -22,7 +22,7 @@ public class Day1 {
 
     public void part1() {
         var sum = new AtomicInteger();
-        InputReader.readFile("1-1.txt").forEach(line -> sum.getAndAdd(solveOneLine(line)));
+        InputReader.readFile("day1.txt").forEach(line -> sum.getAndAdd(solveOneLine(line)));
         System.out.println(sum);
     }
 
@@ -43,7 +43,7 @@ public class Day1 {
 
     private void part2() {
         var sum = new AtomicInteger();
-        InputReader.readFile("1-2.txt").stream()
+        InputReader.readFile("day1.txt").stream()
                         .map(this::replaceNumbers)
                         .forEach(line -> sum.getAndAdd(solveOneLine(line)));
         System.out.println(sum);

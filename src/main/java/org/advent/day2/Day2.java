@@ -6,7 +6,7 @@ public class Day2 {
 
     private void part1() {
         var bag = Bag.builder().red(12).green(13).blue(14).build();
-        var result = (Integer) InputReader.readFile("2-1.txt")
+        var result = (Integer) InputReader.readFile("day2.txt")
                 .stream()
                 .filter(line -> canPlay(line, bag))
                 .map(this::extractId)
@@ -44,7 +44,7 @@ public class Day2 {
     }
 
     private void part2() {
-        var result = (Integer) InputReader.readFile("2-2.txt")
+        var result = (Integer) InputReader.readFile("day2.txt")
                 .stream()
                 .map(this::extractMinimumBag)
                 .mapToInt(this::computePower)

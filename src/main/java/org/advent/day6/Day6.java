@@ -3,13 +3,13 @@ package org.advent.day6;
 public class Day6 {
 
     private void part1() {
-        var problemSolver = new Day6Solver("6-1.txt");
+        var problemSolver = new Day6Solver("day6.txt");
         problemSolver.solve();
         System.out.println(problemSolver.getResult());
     }
 
     private void part2() {
-        var problemSolver = new Part2Solver("6-2.txt");
+        var problemSolver = new Part2Solver("day6.txt");
         problemSolver.solve();
         System.out.println(problemSolver.getResult());
     }
