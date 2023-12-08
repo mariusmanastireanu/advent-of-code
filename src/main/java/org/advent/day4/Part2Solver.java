@@ -8,10 +8,6 @@ public class Part2Solver extends Day4Solver {
 
     private final Map<Integer, Integer> map = new HashMap<>();
 
-    public Part2Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public void solve(Collection<String> lines) {
         var index = 1;

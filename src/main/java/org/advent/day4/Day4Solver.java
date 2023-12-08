@@ -8,10 +8,6 @@ import java.util.Set;
 
 public abstract class Day4Solver extends AbstractSolver {
 
-    public Day4Solver(String filename) {
-        super(filename);
-    }
-
     protected Set<Integer> getWinningCards(String line) {
         var cards = line.split(":")[1].trim().split("\\|");
         var winningCards = InputReader.extractSet(cards[0]);

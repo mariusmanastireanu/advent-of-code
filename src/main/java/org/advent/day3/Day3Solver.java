@@ -10,10 +10,6 @@ import java.util.stream.Collectors;
 
 public abstract class Day3Solver extends AbstractSolver {
 
-    public Day3Solver(String filename) {
-        super(filename);
-    }
-
     protected abstract void resolve(List<List<Character>> map, Integer line, Integer colStart, Integer colEnd, Integer number);
 
     @Override

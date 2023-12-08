@@ -2,9 +2,6 @@ package org.advent.day6;
 
 public class Part2Solver extends Day6Solver {
 
-    public Part2Solver(String filename) {
-        super(filename);
-    }
 
     @Override
     protected String getNumbersStringFromLine(String line) {

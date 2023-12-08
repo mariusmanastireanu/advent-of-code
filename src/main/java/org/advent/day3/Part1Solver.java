@@ -7,10 +7,6 @@ public class Part1Solver extends Day3Solver {
 
     private final AtomicInteger result = new AtomicInteger(0);
 
-    public Part1Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public void resolve(List<List<Character>> map, Integer line, Integer colStart, Integer colEnd, Integer number) {
         if (checkNeighboursOfNumber(map, line, colStart, colEnd, this::isSymbol) != null) {

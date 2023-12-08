@@ -11,10 +11,6 @@ public abstract class Day7Solver extends AbstractSolver {
 
     private long result = 0L;
 
-    public Day7Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public Object getResult() {
         return result;
@@ -27,7 +23,7 @@ public abstract class Day7Solver extends AbstractSolver {
                 .map(this::createHand)
                 .sorted(new HandComparator())
                 .map(hand -> index.getAndDecrement() * hand.getBet())
-                .reduce(Long::sum).get();
+                .reduce(Long::sum).orElse(0L);
     }
 
     protected abstract Hand createHand(String line);

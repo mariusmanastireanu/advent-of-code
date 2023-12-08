@@ -9,10 +9,6 @@ public class Part2Solver extends Day3Solver {
 
     private final Map<Point, List<Integer>> map = new HashMap<>();
 
-    public Part2Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public void resolve(List<List<Character>> charMatrix, Integer line, Integer columnStart, Integer columnEnd, Integer number) {
         var point = checkNeighboursOfNumber(charMatrix, line, columnStart, columnEnd, this::isGear);

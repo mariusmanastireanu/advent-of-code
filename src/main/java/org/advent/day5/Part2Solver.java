@@ -5,10 +5,6 @@ import java.util.stream.Stream;
 
 public class Part2Solver extends Day5Solver {
 
-    public Part2Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     protected Stream<Long> extractSeeds(String line) {
         var seeds = line.split(":")[1].trim().split(" ");

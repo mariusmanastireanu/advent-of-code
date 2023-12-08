@@ -30,10 +30,6 @@ public abstract class Day5Solver extends AbstractSolver {
             "humidity-to-location map:", humidityToLocation
     );
 
-    public Day5Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public void solve(Collection<String> lines) {
         AlmanacList almanacList = null;
@@ -55,8 +51,7 @@ public abstract class Day5Solver extends AbstractSolver {
                 .map(lightToTemperature::getDestination)
                 .map(temperatureToHumidity::getDestination)
                 .map(humidityToLocation::getDestination)
-                .min(Long::compareTo)
-                .get();
+                .min(Long::compareTo).orElse(0L);
     }
 
     @Override

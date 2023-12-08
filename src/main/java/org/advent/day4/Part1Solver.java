@@ -6,10 +6,6 @@ public class Part1Solver extends Day4Solver {
 
     private int result = 0;
 
-    public Part1Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public void solve(Collection<String> lines) {
         result = lines.stream()

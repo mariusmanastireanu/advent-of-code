@@ -16,10 +16,6 @@ public class Day6Solver extends AbstractSolver {
 
     private long result = 0L;
 
-    public Day6Solver(String filename) {
-        super(filename);
-    }
-
     @Override
     public void solve(Collection<String> lines) {
         readInput(lines);
