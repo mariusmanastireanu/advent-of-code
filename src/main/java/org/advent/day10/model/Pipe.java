@@ -7,19 +7,18 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Pipe {
 
-    HORIZONTAL('-', Direction.EAST, Direction.WEST, true),
-    VERTICAL('|', Direction.NORTH, Direction.SOUTH, true),
-    NORTH_EAST('L', Direction.NORTH, Direction.EAST, false),
-    NORTH_WEST('J', Direction.NORTH, Direction.WEST, false),
-    SOUTH_WEST('7', Direction.SOUTH, Direction.WEST, false),
-    SOUTH_EAST('F', Direction.SOUTH, Direction.EAST, false),
-    SOURCE('S', null, null, false),
+    HORIZONTAL('-', Direction.EAST, Direction.WEST),
+    VERTICAL('|', Direction.NORTH, Direction.SOUTH),
+    NORTH_EAST('L', Direction.NORTH, Direction.EAST),
+    NORTH_WEST('J', Direction.NORTH, Direction.WEST),
+    SOUTH_WEST('7', Direction.SOUTH, Direction.WEST),
+    SOUTH_EAST('F', Direction.SOUTH, Direction.EAST),
+    SOURCE('S', null, null),
     ;
 
     private final char character;
     private final Direction from;
     private final Direction to;
-    private final boolean bidirectional;
 
     public boolean isConnectedFrom(Direction direction) {
         return from == direction || to == direction;
