@@ -15,41 +15,40 @@ public class Universe {
 
     public Universe(Collection<String> lines) {
         parseInput(lines);
-        countEmptyRowsAndCols();
+        countEmptyColumns();
     }
 
     private void parseInput(Collection<String> lines) {
         var galaxyIndex = 1;
         var rowIndex = 0;
         for (String line : lines) {
-            var list = new ArrayList<String>();
+            var lineAsList = new ArrayList<String>();
             var colIndex = 0;
+            var hasGalaxy = false;
             for (char c : line.toCharArray()) {
                 if (c == '#') {
-                    list.add(String.valueOf(galaxyIndex));
+                    lineAsList.add(String.valueOf(galaxyIndex));
                     galaxyIndexMap.put(galaxyIndex, Point.builder().x(rowIndex).y(colIndex).build());
                     galaxyIndex++;
+                    hasGalaxy = true;
                 } else {
-                    list.add(".");
+                    lineAsList.add(".");
                 }
                 colIndex++;
             }
-            map.add(list);
+            if (!hasGalaxy) {
+                emptyRows.add(rowIndex);
+            }
+            map.add(lineAsList);
             rowIndex++;
         }
     }
 
-    private void countEmptyRowsAndCols() {
-        for (int i = 0; i < map.size(); i++) {
-            if (new HashSet<>(map.get(i)).size() == 1) {
-                emptyRows.add(i);
-            }
-        }
-
+    private void countEmptyColumns() {
         for (int columnIndex = 0; columnIndex < map.get(0).size(); columnIndex++) {
             var allEmpty = true;
-            for (int rowIndex = 0; rowIndex < map.size(); rowIndex++) {
-                if (!".".equals(map.get(rowIndex).get(columnIndex))) {
+            for (var line : map) {
+                if (!".".equals(line.get(columnIndex))) {
                     allEmpty = false;
                     break;
                 }
