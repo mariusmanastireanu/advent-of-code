@@ -8,9 +8,10 @@ import java.util.*;
 
 public class Day10Solver extends AbstractSolver {
 
-    private List<Node> longestCycle = new ArrayList<>();
+    protected List<Node> longestCycle = new ArrayList<>();
+    protected ParsedInput parsedInput;
     private Node startNode;
-    private int result = 0;
+    protected int result = 0;
 
     @Override
     public Object getResult() {
@@ -19,8 +20,8 @@ public class Day10Solver extends AbstractSolver {
 
     @Override
     public void solve(Collection<String> lines) {
-        var matrix = new ParsedInput(lines);
-        this.startNode = new Node(new HashMap<>(), matrix.getMatrix(), matrix.getStartingRowIndex(), matrix.getStartingColIndex());
+        parsedInput = new ParsedInput(lines);
+        this.startNode = new Node(new HashMap<>(), parsedInput.getMatrix(), parsedInput.getStartingRowIndex(), parsedInput.getStartingColIndex());
         findLongestCycle(startNode, new LinkedList<>());
         result = longestCycle.size() / 2;
     }

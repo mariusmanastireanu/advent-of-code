@@ -1,18 +1,28 @@
 package org.advent.day10.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Node {
 
+    @EqualsAndHashCode.Include
     private final int rowIndex;
+    @EqualsAndHashCode.Include
     private final int colIndex;
     private final char character;
 
     private final List<Node> neighbors = new ArrayList<>();
+
+    public Node(int rowIndex, int colIndex) {
+        this.rowIndex = rowIndex;
+        this.colIndex = colIndex;
+        this.character = ' ';
+    }
 
     public Node(Map<String, Node> knownNodes, List<List<Character>> matrix, int rowIndex, int colIndex) {
         this.character = matrix.get(rowIndex).get(colIndex);
