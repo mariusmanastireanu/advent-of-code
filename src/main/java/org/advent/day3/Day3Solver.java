@@ -1,6 +1,7 @@
 package org.advent.day3;
 
 import org.advent.helper.AbstractSolver;
+import org.advent.helper.Point;
 
 import java.util.ArrayList;
 import java.util.Collection;

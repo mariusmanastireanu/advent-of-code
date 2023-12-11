@@ -1,4 +1,4 @@
-package org.advent.day3;
+package org.advent.helper;
 
 import lombok.Builder;
 import lombok.Data;
