@@ -27,13 +27,10 @@ public class Universe {
             var hasGalaxy = false;
             for (char c : line.toCharArray()) {
                 if (c == '#') {
-                    lineAsList.add(String.valueOf(galaxyIndex));
-                    galaxyIndexMap.put(galaxyIndex, Point.builder().x(rowIndex).y(colIndex).build());
-                    galaxyIndex++;
+                    galaxyIndexMap.put(galaxyIndex++, Point.builder().x(rowIndex).y(colIndex).build());
                     hasGalaxy = true;
-                } else {
-                    lineAsList.add(".");
                 }
+                lineAsList.add(""+c);
                 colIndex++;
             }
             if (!hasGalaxy) {
