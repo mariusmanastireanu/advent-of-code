@@ -4,7 +4,6 @@ import lombok.Getter;
 import org.advent.helper.Point;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Getter
 public class Universe {
@@ -16,33 +15,27 @@ public class Universe {
 
     public Universe(Collection<String> lines) {
         parseInput(lines);
-        indexGalaxies();
         countEmptyRowsAndCols();
     }
 
     private void parseInput(Collection<String> lines) {
-        var galaxyIndex = new AtomicInteger(1);
+        var galaxyIndex = 1;
+        var rowIndex = 0;
         for (String line : lines) {
             var list = new ArrayList<String>();
+            var colIndex = 0;
             for (char c : line.toCharArray()) {
                 if (c == '#') {
-                    list.add(String.valueOf(galaxyIndex.getAndIncrement()));
+                    list.add(String.valueOf(galaxyIndex));
+                    galaxyIndexMap.put(galaxyIndex, Point.builder().x(rowIndex).y(colIndex).build());
+                    galaxyIndex++;
                 } else {
                     list.add(".");
                 }
+                colIndex++;
             }
             map.add(list);
-        }
-    }
-
-    public void indexGalaxies() {
-        for (int rowIndex = 0; rowIndex < map.size(); rowIndex++) {
-            for (int colIndex = 0; colIndex < map.get(rowIndex).size(); colIndex++) {
-                if (!".".equals(map.get(rowIndex).get(colIndex))) {
-                    galaxyIndexMap.put(Integer.parseInt(String.valueOf(map.get(rowIndex).get(colIndex))),
-                            Point.builder().x(rowIndex).y(colIndex).build());
-                }
-            }
+            rowIndex++;
         }
     }
 
