@@ -53,11 +53,13 @@ public abstract class Day12Solver extends AbstractSolver {
                         && !condition.substring(0, brokenGroups.get(0)).contains(".")
                         && (condition.length() == brokenGroups.get(0) || condition.charAt(brokenGroups.get(0)) != '#')) {
                     // if the condition is long enough to contain the broken group, and the broken group does not contain a break
+                    // and the broken group is not followed by another broken group, we can remove the broken group and continue
                     solutions += getNumberOfSolutions(new ConditionRecord(condition.substring(
                             Math.min(condition.length(), brokenGroups.get(0) + 1)),
                             new ArrayList<>(brokenGroups.subList(1, brokenGroups.size()))));
                 }
             } else {
+                // the first character is a valid character, so we can replace it with a break or a broken group
                 solutions += getNumberOfSolutions(new ConditionRecord(condition.replaceFirst("\\?", "."), new ArrayList<>(brokenGroups)));
                 solutions += getNumberOfSolutions(new ConditionRecord(condition.replaceFirst("\\?", "#"), new ArrayList<>(brokenGroups)));
             }
