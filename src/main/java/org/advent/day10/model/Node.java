@@ -2,6 +2,7 @@ package org.advent.day10.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.advent.helper.Direction;
 
 import java.util.*;
 import java.util.stream.Collectors;

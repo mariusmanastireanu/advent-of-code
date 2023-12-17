@@ -1,5 +1,7 @@
 package org.advent.day16;
 
+import org.advent.helper.Direction;
+
 import java.util.Collection;
 
 public class Part2Solver extends Day16Solver {
@@ -10,19 +12,19 @@ public class Part2Solver extends Day16Solver {
         result = 0;
         for (int i = 0; i < lines.size(); i++) {
             matrix.reset();
-            matrix.traverse(i, 0, Direction.RIGHT);
+            matrix.traverse(i, 0, Direction.EAST);
             checkResult(matrix);
 
             matrix.reset();
-            matrix.traverse(i, lines.size() - 1, Direction.LEFT);
+            matrix.traverse(i, lines.size() - 1, Direction.WEST);
             checkResult(matrix);
 
             matrix.reset();
-            matrix.traverse(0, i, Direction.DOWN);
+            matrix.traverse(0, i, Direction.SOUTH);
             checkResult(matrix);
 
             matrix.reset();
-            matrix.traverse(lines.size() - 1, i, Direction.UP);
+            matrix.traverse(lines.size() - 1, i, Direction.NORTH);
             checkResult(matrix);
         }
     }

@@ -2,6 +2,7 @@ package org.advent.day10.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.advent.helper.Direction;
 
 @Getter
 @AllArgsConstructor

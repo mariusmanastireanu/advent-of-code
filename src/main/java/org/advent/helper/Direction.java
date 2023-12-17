@@ -1,4 +1,4 @@
-package org.advent.day10.model;
+package org.advent.helper;
 
 public enum Direction {
 
