@@ -41,4 +41,34 @@ public enum Direction {
         }
     }
 
+    public Direction getLeft() {
+        switch (this) {
+            case EAST:
+                return NORTH;
+            case WEST:
+                return SOUTH;
+            case NORTH:
+                return WEST;
+            case SOUTH:
+                return EAST;
+            default:
+                throw new IllegalArgumentException("No left direction for " + this);
+        }
+    }
+
+    public Direction getRight() {
+        switch (this) {
+            case EAST:
+                return SOUTH;
+            case WEST:
+                return NORTH;
+            case NORTH:
+                return EAST;
+            case SOUTH:
+                return WEST;
+            default:
+                throw new IllegalArgumentException("No right direction for " + this);
+        }
+    }
+
 }
