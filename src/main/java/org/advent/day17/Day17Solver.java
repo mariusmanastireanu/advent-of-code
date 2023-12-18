@@ -1,5 +1,7 @@
 package org.advent.day17;
 
+import org.advent.day17.model.Node;
+import org.advent.day17.model.State;
 import org.advent.helper.AbstractSolver;
 import org.advent.helper.Direction;
 

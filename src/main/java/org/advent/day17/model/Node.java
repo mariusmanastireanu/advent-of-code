@@ -1,4 +1,4 @@
-package org.advent.day17;
+package org.advent.day17.model;
 
 import lombok.Builder;
 import lombok.Data;
