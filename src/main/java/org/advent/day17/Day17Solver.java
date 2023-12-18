@@ -36,15 +36,15 @@ public abstract class Day17Solver extends AbstractSolver {
     public int findBestPath() {
         // Use priority queue to get the lowest cost first
         var queue = new PriorityQueue<State>();
-        var visited = new HashSet<State>();
+        var visited = new HashSet<Node>();
         // add the first two possible directions
         addStartingPoints(queue);
         while (!queue.isEmpty()) {
             var top = queue.poll();
-            if (visited.add(top)) {
-                if (top.getDirectionCount() >= getMinimumNumberOfSteps()
-                        && top.getRow() == matrix.length - 1
-                        && top.getColumn() == matrix[top.getRow()].length - 1) {
+            if (visited.add(top.getNode())) {
+                if (top.getNode().getDirectionCount() >= getMinimumNumberOfSteps()
+                        && top.getNode().getRow() == matrix.length - 1
+                        && top.getNode().getColumn() == matrix[top.getNode().getRow()].length - 1) {
                     // has reached the end and can stop
                     return top.getCost();
                 }
@@ -57,28 +57,34 @@ public abstract class Day17Solver extends AbstractSolver {
 
     private void addStartingPoints(PriorityQueue<State> queue) {
         queue.add(State.builder()
-                .row(0).column(1)
-                .direction(Direction.EAST)
+                .node(Node.builder()
+                    .row(0).column(1)
+                    .direction(Direction.EAST)
+                    .build())
                 .cost(matrix[0][1])
                 .build());
         queue.add(State.builder()
-                .row(1).column(0)
-                .direction(Direction.SOUTH)
+                .node(Node.builder()
+                    .row(1).column(0)
+                    .direction(Direction.SOUTH)
+                    .build())
                 .cost(matrix[1][0])
                 .build());
     }
 
     private void addNextPoints(State top, PriorityQueue<State> queue) {
         for (Direction direction : getPossibleDirections(top)) {
-            if (!isValidDirection(top.getRow(), top.getColumn(), direction)) {
+            if (!isValidDirection(top.getNode().getRow(), top.getNode().getColumn(), direction)) {
                 continue;
             }
             queue.add(State.builder()
-                    .row(top.getRow() + direction.getRowOffset())
-                    .column(top.getColumn() + direction.getColOffset())
-                    .direction(direction)
-                    .directionCount(direction == top.getDirection() ? top.getDirectionCount() + 1 : 1)
-                    .cost(top.getCost() + matrix[top.getRow() + direction.getRowOffset()][top.getColumn() + direction.getColOffset()])
+                    .node(Node.builder()
+                        .row(top.getNode().getRow() + direction.getRowOffset())
+                        .column(top.getNode().getColumn() + direction.getColOffset())
+                        .direction(direction)
+                        .directionCount(direction == top.getNode().getDirection() ? top.getNode().getDirectionCount() + 1 : 1)
+                        .build())
+                    .cost(top.getCost() + matrix[top.getNode().getRow() + direction.getRowOffset()][top.getNode().getColumn() + direction.getColOffset()])
                     .build()
             );
         }
@@ -86,12 +92,12 @@ public abstract class Day17Solver extends AbstractSolver {
 
     public Collection<Direction> getPossibleDirections(State state) {
         var directions = new ArrayList<Direction>();
-        if (state.getDirectionCount() < getMaximumNumberOfSteps()) {
-            directions.add(state.getDirection());
+        if (state.getNode().getDirectionCount() < getMaximumNumberOfSteps()) {
+            directions.add(state.getNode().getDirection());
         }
-        if (state.getDirectionCount() >= getMinimumNumberOfSteps()) {
-            directions.add(state.getDirection().getLeft());
-            directions.add(state.getDirection().getRight());
+        if (state.getNode().getDirectionCount() >= getMinimumNumberOfSteps()) {
+            directions.add(state.getNode().getDirection().getLeft());
+            directions.add(state.getNode().getDirection().getRight());
         }
         return directions;
     }
