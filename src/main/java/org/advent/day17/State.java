@@ -4,12 +4,9 @@ import lombok.Builder;
 import lombok.Data;
 import org.advent.helper.Direction;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 @Data
 @Builder
-public class State {
+public class State implements Comparable<State> {
 
     private final int row;
     private final int column;
@@ -18,19 +15,16 @@ public class State {
     private final int directionCount = 1;
     private final int cost;
 
-    private final int minimumNumberOfSteps;
-    private final int maximumNumberOfSteps;
-
-    public Collection<Direction> getPossibleDirections() {
-        var directions = new ArrayList<Direction>();
-        if (directionCount < maximumNumberOfSteps) {
-            directions.add(direction);
+    @Override
+    public int compareTo(State o) {
+        var value = cost - o.cost;
+        if (value == 0 && direction == o.direction) {
+            value = directionCount - o.directionCount;
         }
-        if (directionCount >= minimumNumberOfSteps) {
-            directions.add(direction.getLeft());
-            directions.add(direction.getRight());
+        if (value == 0) {
+            value = row + column - o.row - o.column;
         }
-        return directions;
+        return value;
     }
 
 }
