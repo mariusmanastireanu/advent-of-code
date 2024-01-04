@@ -74,8 +74,8 @@ public class Day23Solver extends AbstractSolver {
     }
 
     protected List<Direction> getPossibleDirections(Point point) {
-        var row = point.getX();
-        var col = point.getY();
+        var row = (int) point.getX();
+        var col = (int) point.getY();
         if ('.' == matrix[row][col]) {
             return Arrays.asList(Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
         } else if ('>' == matrix[row][col]) {
@@ -91,8 +91,8 @@ public class Day23Solver extends AbstractSolver {
     }
 
     protected boolean canVisit(Point point, Set<Point> visited) {
-        var row = point.getX();
-        var col = point.getY();
+        var row = (int) point.getX();
+        var col = (int) point.getY();
         return row >= 0 && row < matrix.length
                 && col >= 0 && col < matrix[0].length
                 && matrix[row][col] != '#'

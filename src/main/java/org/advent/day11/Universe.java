@@ -57,10 +57,10 @@ public class Universe {
     }
 
     public long computeDistance(Point pointA, Point pointB, long expandRate) {
-        return Math.abs(pointA.getX() - pointB.getX())
-                + ((expandRate - 1) * (emptiesBetween(pointA.getX(), pointB.getX(), emptyRows)))
-                + Math.abs(pointA.getY() - pointB.getY())
-                + ((expandRate - 1) * (emptiesBetween(pointA.getY(), pointB.getY(), emptyCols)));
+        return Math.abs((int) pointA.getX() - (int) pointB.getX())
+                + ((expandRate - 1) * (emptiesBetween((int) pointA.getX(), (int) pointB.getX(), emptyRows)))
+                + Math.abs((int) pointA.getY() - (int) pointB.getY())
+                + ((expandRate - 1) * (emptiesBetween((int) pointA.getY(), (int) pointB.getY(), emptyCols)));
     }
 
     private int emptiesBetween(int a, int b, Collection<Integer> emptyCells) {
