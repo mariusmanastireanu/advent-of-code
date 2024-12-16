@@ -5,18 +5,13 @@ public enum Direction {
     EAST, WEST, NORTH, SOUTH;
 
     public static Direction getDirection(char c) {
-        switch (c) {
-            case 'R':
-                return EAST;
-            case 'L':
-                return WEST;
-            case 'U':
-                return NORTH;
-            case 'D':
-                return SOUTH;
-            default:
-                throw new IllegalArgumentException("No direction for " + c);
-        }
+        return switch (c) {
+            case 'R', '>' -> EAST;
+            case 'L', '<' -> WEST;
+            case 'U', '^' -> NORTH;
+            case 'D', 'v' -> SOUTH;
+            default -> throw new IllegalArgumentException("No direction for " + c);
+        };
     }
 
     public int getRowOffset() {
